@@ -1,7 +1,7 @@
 <!-- default file list -->
 *Files to look at*:
 
-* [Default.aspx](./CS/ASPxPivotGrid_AddRemoveFilterItems/Default.aspx) (VB: [Default.aspx.vb](./VB/ASPxPivotGrid_AddRemoveFilterItems/Default.aspx.vb))
+* [Default.aspx](./CS/ASPxPivotGrid_AddRemoveFilterItems/Default.aspx) (VB: [Default.aspx](./VB/ASPxPivotGrid_AddRemoveFilterItems/Default.aspx))
 * [Default.aspx.cs](./CS/ASPxPivotGrid_AddRemoveFilterItems/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/ASPxPivotGrid_AddRemoveFilterItems/Default.aspx.vb))
 <!-- default file list end -->
 # How to add and remove items from the filter drop-down list
