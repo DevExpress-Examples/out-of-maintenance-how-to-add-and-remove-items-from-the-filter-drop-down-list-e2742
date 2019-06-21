@@ -5,6 +5,9 @@
 * [Default.aspx.cs](./CS/ASPxPivotGrid_AddRemoveFilterItems/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/ASPxPivotGrid_AddRemoveFilterItems/Default.aspx.vb))
 <!-- default file list end -->
 # How to add and remove items from the filter drop-down list
+<!-- run online -->
+**[[Run Online]](https://codecentral.devexpress.com/e2742/)**
+<!-- run online end -->
 
 
 <p>The following example shows how to add and remove items from the filter dropdown list.</p>
