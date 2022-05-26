@@ -1,7 +1,7 @@
 <%@ Page Language="vb" AutoEventWireup="true" CodeBehind="Default.aspx.cs"
 	Inherits="ASPxPivotGrid_AddRemoveFilterItems._Default" %>
 
-<%@ Register Assembly="DevExpress.Web.ASPxPivotGrid.v13.1, Version=13.1.14.0,
+<%@ Register Assembly="DevExpress.Web.ASPxPivotGrid.v21.2, Version=21.2.7.0,
 Culture=neutral, PublicKeyToken=b88d1754d700e49a"
 Namespace="DevExpress.Web.ASPxPivotGrid"
 TagPrefix="dx" %>
@@ -16,39 +16,57 @@ TagPrefix="dx" %>
 <body>
 	<form id="form1" runat="server">
 	<div>
-		<dx:ASPxPivotGrid ID="ASPxPivotGrid1" runat="server" DataSourceID="AccessDataSource1" 
-		OnCustomFilterPopupItems="ASPxPivotGrid1_CustomFilterPopupItems">
+		<dx:ASPxPivotGrid ID="ASPxPivotGrid1" runat="server" DataSourceID="SqlDataSource1" 
+		OnCustomFilterPopupItems="ASPxPivotGrid1_CustomFilterPopupItems" ClientIDMode="AutoID" IsMaterialDesign="False">
 			<Fields>
 				<dx:PivotGridField ID="fieldProductName" Area="RowArea" AreaIndex="1"
-				Caption="Product Name" FieldName="ProductName">
+				Caption="Product Name">
+				    <DataBindingSerializable>
+                        <dx:DataSourceColumnBinding ColumnName="ProductName" />
+                    </DataBindingSerializable>
 				</dx:PivotGridField>
-				<dx:PivotGridField ID="fieldShippedYear" Area="ColumnArea" AreaIndex="0" Caption="Year"
-					FieldName="ShippedDate" GroupIndex="0" GroupInterval="DateYear" InnerGroupIndex="0">
+				<dx:PivotGridField ID="fieldShippedYear" Area="ColumnArea" AreaIndex="0" Caption="Year" GroupIndex="0" InnerGroupIndex="0" UnboundFieldName="fieldShippedYear">
+				    <DataBindingSerializable>
+                        <dx:DataSourceColumnBinding ColumnName="ShippedDate" GroupInterval="DateYear" />
+                    </DataBindingSerializable>
 				</dx:PivotGridField>
-				<dx:PivotGridField ID="fieldProductSales" Area="DataArea" AreaIndex="0" Caption="Sales"
-					FieldName="ProductSales">
+				<dx:PivotGridField ID="fieldProductSales" Area="DataArea" AreaIndex="0" Caption="Sales">
+				    <DataBindingSerializable>
+                        <dx:DataSourceColumnBinding ColumnName="ProductSales" />
+                    </DataBindingSerializable>
 				</dx:PivotGridField>
 				<dx:PivotGridField ID="fieldCategoryName" Area="RowArea" AreaIndex="0"
-				Caption="Category Name" FieldName="CategoryName">
+				Caption="Category Name">
+				    <DataBindingSerializable>
+                        <dx:DataSourceColumnBinding ColumnName="CategoryName" />
+                    </DataBindingSerializable>
 				</dx:PivotGridField>
-				<dx:PivotGridField ID="fieldShippedMonth" Area="ColumnArea" AreaIndex="2" Caption="Month"
-					FieldName="ShippedDate" GroupIndex="0" InnerGroupIndex="2" GroupInterval="DateMonth">
+				<dx:PivotGridField ID="fieldShippedMonth" Area="ColumnArea" AreaIndex="2" Caption="Month" GroupIndex="0" InnerGroupIndex="2" UnboundFieldName="fieldShippedMonth">
+				    <DataBindingSerializable>
+                        <dx:DataSourceColumnBinding ColumnName="ShippedDate" GroupInterval="DateMonth" />
+                    </DataBindingSerializable>
 				</dx:PivotGridField>
 				<dx:PivotGridField ID="fieldShippedQuarter" Area="ColumnArea" AreaIndex="1"
-				Caption="Quarter" FieldName="ShippedDate" GroupIndex="0"
-				GroupInterval="DateQuarter" InnerGroupIndex="1"
+				Caption="Quarter" GroupIndex="0" InnerGroupIndex="1"
 				ValueFormat-FormatString="Quarter {0}"
-				ValueFormat-FormatType="Custom">
+				ValueFormat-FormatType="Custom" UnboundFieldName="fieldShippedQuarter">
+<ValueFormat FormatString="Quarter {0}" FormatType="Custom"></ValueFormat>
+                    <DataBindingSerializable>
+                        <dx:DataSourceColumnBinding ColumnName="ShippedDate" GroupInterval="DateQuarter" />
+                    </DataBindingSerializable>
 				</dx:PivotGridField>
 			</Fields>
+			<OptionsData DataProcessingEngine="Optimized" />
 			<Groups>
 				<dx:PivotGridWebGroup />
 			</Groups>
 		</dx:ASPxPivotGrid>
-		<asp:AccessDataSource ID="AccessDataSource1" runat="server" DataFile="~/nwind.mdb"
-			SelectCommand="SELECT [CategoryName], [ProductName], [ProductSales],
-			[ShippedDate] FROM [ProductReports]">
-		</asp:AccessDataSource>
+		    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+            ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
+            SelectCommand="SELECT [CategoryName], [ProductName], [ProductSales],
+			[ShippedDate] FROM [ProductReports]"></asp:SqlDataSource>
+
 
 	</div>
 	</form>
